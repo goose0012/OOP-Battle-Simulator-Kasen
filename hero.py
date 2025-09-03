@@ -14,13 +14,15 @@ class Hero:
         (Bonus) defence: A hero's ability to reduce incoming damage.
         (Bonus) special_ability: A unique ability the hero can use.
     """
-    
+
     def __init__(self, name):
         self.name = name
         self.health = 100
         self.defense = random.randint(5, 15)
         self.attack_power = random.randint(10, 20)
         self.ultimate_ability = "Thank you king!"
+        self.total_damage_dealt = 0
+        self.rounds_survived = 0
         #TODO Set the hero's name.
         #TODO Set the hero's health. You might give the hero more health than a goblin.
         #TODO Set the hero's attack power. Should it be more consistent than the goblin's?
@@ -41,3 +43,9 @@ class Hero:
 
     def is_alive(self):
         return self.health > 0
+
+    def divine_flame(self):
+        # TODO Implement the hero's ultimate ability to where damage increases by 500% for 3 rounds and adds 50 health
+        self.attack_power *= 5
+        self.health += 50
+        return "Divine Flame."

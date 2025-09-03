@@ -7,7 +7,7 @@ def main():
     print("༼ ᓄºل͟º ༽ᓄ   ᕦ(ò_óˇ)ᕤ")
 
     # Create a hero
-    hero = Hero("Aragorn")
+    hero = Hero("Sukuna")
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
     goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
@@ -28,6 +28,8 @@ def main():
         # Check if the target goblin was defeated
         if not target_goblin.is_alive():
             defeated_goblins += 1
+            hero.total_damage_dealt += damage
+            hero.rounds_survived += 1
             print(f"{target_goblin.name} has been defeated!")
 
         # Goblins' turn to attack
@@ -40,11 +42,14 @@ def main():
     # Determine outcome
     if hero.is_alive():
         print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
+
     else:
         print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
+    print(f"Total damage dealt by hero: {hero.total_damage_dealt}")
+    print(f"Rounds Survived: {hero.rounds_survived}")
 
 if __name__ == "__main__":
     main()

@@ -18,8 +18,11 @@ def main():
     # Battle Loop 
     while hero.is_alive() and any(goblin.is_alive() for goblin in goblins):
         print("\nNew Round!")
-        
-        # Hero's turn to attack
+        if not hasattr(hero, 'divine_flame_rounds') or hero.divine_flame_rounds == 0:
+            if random.random() < 0.10:
+                print(hero.divine_flame())
+        if hasattr(hero, 'divine_flame_rounds') and hero.divine_flame_rounds > 0:
+            hero.divine_flame_rounds -= 1
         target_goblin = random.choice([goblin for goblin in goblins if goblin.is_alive()])
         damage = hero.strike()
         print(f"Hero attacks {target_goblin.name} for {damage} damage!")

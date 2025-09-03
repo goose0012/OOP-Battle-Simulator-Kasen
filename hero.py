@@ -45,7 +45,8 @@ class Hero:
         return self.health > 0
 
     def divine_flame(self):
-        # TODO Implement the hero's ultimate ability to where damage increases by 500% for 3 rounds and adds 50 health
+        # Divine Flame: Damage increases by 500% for 3 rounds and adds 50 health
+        self.divine_flame_rounds = 3
         self.attack_power *= 5
         self.health += 50
-        return "Divine Flame."
+        return "開 フーガ"

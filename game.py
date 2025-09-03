@@ -25,7 +25,7 @@ def main():
             hero.divine_flame_rounds -= 1
         target_goblin = random.choice([goblin for goblin in goblins if goblin.is_alive()])
         damage = hero.strike()
-        print(f"Hero attacks {target_goblin.name} for {damage} damage!")
+        print(f"{hero.name} attacks {target_goblin.name} for {damage} damage!")
         target_goblin.take_damage(damage)
 
         # Check if the target goblin was defeated
@@ -39,15 +39,15 @@ def main():
         for goblin in goblins:
             if goblin.is_alive():
                 damage = goblin.attack()
-                print(f"{goblin.name} attacks hero for {damage} damage!")
+                print(f"{goblin.name} attacks {hero.name} for {damage} damage!")
                 hero.receive_damage(damage)
 
     # Determine outcome
     if hero.is_alive():
-        print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
+        print(f"\n{hero.name} has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
 
     else:
-        print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
+        print(f"\n{hero.name} has been defeated. Game Over. (｡•́︿•̀｡)")
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")

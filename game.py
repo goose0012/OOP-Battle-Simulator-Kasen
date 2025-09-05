@@ -1,6 +1,7 @@
 import random
 from goblin import Goblin
 from hero import Hero
+from boss import Dragon
 
 def main():
     print("Welcome to the Battle Arena!")
@@ -45,9 +46,22 @@ def main():
     # Determine outcome
     if hero.is_alive():
         print(f"\n{hero.name} has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
-
     else:
         print(f"\n{hero.name} has been defeated. Game Over. (｡•́︿•̀｡)")
+
+        if hero.is_alive():
+            print("Boss time!")
+            boss = Dragon("Dragon")
+            while hero.is_alive() and boss.is_alive():
+                damage = hero.strike()
+                boss.take_damage(damage)
+                damage = boss.flamethrower() if random.random() < 0.5 else boss.tail_swipe()
+                hero.receive_damage(damage)
+
+                if boss.is_alive():
+                    damage = boss.attack()
+                    print(f"{boss.name} attacks {hero.name} for {damage} damage!")
+                    hero.receive_damage(damage)
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")

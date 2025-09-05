@@ -1,11 +1,6 @@
 import random
-from enemy import Enemy
 
-class Goblin(Enemy):
-    def __init__(self, name, color):
-        super().__init__(name)
-        self.color = color
-        
+class Enemy:
     def __init__(self, name):
         self.name = name
         self.health = 100
@@ -16,7 +11,6 @@ class Goblin(Enemy):
 
     def take_damage(self, damage):
         self.health -= damage
-        # TODO We should prevent the goblins health from going into the NEGATIVE (COMPLETE)
         if self.health < 0:
             self.health = 0
         print(f"{self.name} takes {damage} damage. Health is now {self.health}.")
